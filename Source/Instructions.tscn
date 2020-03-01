@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Source/Textures/Instructions0000.png" type="Texture" id=1]
+
+[node name="Move_Instructions" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -2.21669
+margin_right = -2.21667
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 54.0
+margin_bottom = 47.0
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 7.67316
+margin_top = -15.1758
+margin_right = 47.6732
+margin_bottom = -1.17579
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Move"
+align = 1
+valign = 1
