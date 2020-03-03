@@ -42,14 +42,16 @@ frames = SubResource( 3 )
 animation = "Lock"
 
 [node name="MainParticle" type="CPUParticles2D" parent="AnimatedSprite"]
+visible = false
 position = Vector2( -21.8259, 27.4528 )
 amount = 6
 lifetime = 0.75
+preprocess = 219.35
 explosiveness = 0.84
 randomness = 1.0
 lifetime_randomness = 0.29
 emission_shape = 1
-emission_sphere_radius = 1.0
+emission_sphere_radius = 2.0
 direction = Vector2( 0, -1 )
 initial_velocity = 10.0
 angular_velocity = 2.0
@@ -65,6 +67,7 @@ lifetime = 0.75
 explosiveness = 1.0
 randomness = 1.0
 lifetime_randomness = 1.0
+draw_order = 1
 emission_shape = 1
 emission_sphere_radius = 1.0
 direction = Vector2( 0, -1 )
@@ -82,11 +85,13 @@ __meta__ = {
 position = Vector2( 36.555, 14.4937 )
 amount = 6
 lifetime = 0.75
+preprocess = 38.71
 explosiveness = 0.7
 randomness = 1.0
 lifetime_randomness = 1.0
+draw_order = 1
 emission_shape = 1
-emission_sphere_radius = 1.0
+emission_sphere_radius = 2.0
 direction = Vector2( 0, -1 )
 gravity = Vector2( 0, 80 )
 initial_velocity = 9.0
@@ -107,6 +112,7 @@ speed_scale = 1.5
 explosiveness = 0.75
 randomness = 1.0
 lifetime_randomness = 0.59
+draw_order = 1
 emission_shape = 1
 emission_sphere_radius = 1.0
 direction = Vector2( 0, -1 )
@@ -132,9 +138,9 @@ margin_bottom = -21.6661
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 4 )
-volume_db = -22.999
+volume_db = -25.0
 area_mask = 16
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
-volume_db = -20.194
+volume_db = -25.0
