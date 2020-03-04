@@ -21,10 +21,10 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="."]
-margin_left = 28.8258
-margin_top = -14.908
-margin_right = 68.8258
-margin_bottom = -0.907958
+margin_left = 29.07
+margin_top = 18.0552
+margin_right = 69.07
+margin_bottom = 32.0553
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Jump"
 align = 1

@@ -7,9 +7,14 @@ export(NodePath) var door_path
 onready var door = get_node(door_path)
 onready var sound = $AudioStreamPlayer2D
 onready var sound2 = $AudioStreamPlayer
+onready var fire = $CPUParticles2D
+onready var firecol = $StaticBody2D2/CollisionShape2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if fire:
+		fire.visible = false
+		firecol.disabled = true
 	health_Bar.set_health(health)
 
 func hit(var dmg):
@@ -22,10 +27,8 @@ func hit(var dmg):
 		
 		
 func death():
-	var inst = preload("res://Source/Sprite.tscn")
-	var fire = inst.instance()
-	fire.position = Vector2(0,-10)
-	add_child(fire)
+	fire.visible = true
+	firecol.disabled = false
 	sound2.play()
 	door.queue_free()
 	

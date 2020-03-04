@@ -1,5 +1,6 @@
 extends KinematicBody2D
 
+export var cutscene = false
 const UP = Vector2(0,-1)
 const GRAVITY = 20
 const MAX_SPEED = 250
@@ -14,6 +15,7 @@ var byServer = false
 var byFire = false
 var alive = true
 var onFire = false
+onready var timer = $Timer
 onready var camera = $Camera2D 
 onready var health_Bar = $HealthBar
 onready var animate = $AnimationTree.get("parameters/playback")
@@ -57,17 +59,18 @@ func _physics_process(_delta):
 		motion = move_and_slide(motion, UP)
 		
 		if Input.is_action_just_pressed("Action"):
-			animate.travel("Attack")
-			sound.play()
-			if byLock:
-				camera.shake(.2,15,8)
-				bod.hit(dmg)
-			if byLaser:
-				camera.shake(.2,15,8)
-				bod.get_parent().hit(dmg)
-			if byServer:
-				camera.shake(.2,15,8)
-				bod.get_parent().hit(dmg)
+			if !cutscene:
+				animate.travel("Attack")
+				sound.play()
+				if byLock:
+					camera.shake(.2,15,8)
+					bod.hit(dmg)
+				if byLaser:
+					camera.shake(.2,15,8)
+					bod.get_parent().hit(dmg)
+				if byServer:
+					camera.shake(.2,15,8)
+					bod.get_parent().hit(dmg)
 		if onFire:
 			damage(1)
 
@@ -100,6 +103,9 @@ func damage(var hit):
 func dead():
 	rotation_degrees = 90
 	alive = false
+	get_tree().change_scene("res://Source/Death.tscn")
+	
+	
 	
 	
 func _on_Area2D2_body_entered(body):

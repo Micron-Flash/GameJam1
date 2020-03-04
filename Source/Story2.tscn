@@ -1,0 +1,137 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Source/Story2.tres" type="Material" id=1]
+[ext_resource path="res://Floor.tres" type="TileSet" id=2]
+[ext_resource path="res://Source/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Source/Scripts/RichTextLabel.gd" type="Script" id=4]
+[ext_resource path="res://Source/Textures/Siloute.png" type="Texture" id=5]
+[ext_resource path="res://Source/Scripts/PopupDialog.gd" type="Script" id=6]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CutScene" type="Node" parent="."]
+
+[node name="Player" parent="CutScene" instance=ExtResource( 3 )]
+position = Vector2( 59.5655, 290.82 )
+cutscene = true
+
+[node name="TileMap" type="TileMap" parent="CutScene"]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 1, 19, 0, 2, 19, 0, 3, 19, 0, 4, 19, 0, 5, 19, 0, 6, 19, 0, 7, 19, 0, 8, 19, 0, 9, 19, 0, 10, 19, 0, 11, 19, 0, 12, 19, 0, 13, 19, 0, 14, 19, 0, 15, 19, 0, 16, 19, 0, 17, 19, 0, 18, 19, 0, 65536, 17, 0, 65555, 15, 0, 131072, 17, 0, 131091, 15, 0, 196608, 17, 0, 196627, 15, 0, 262144, 17, 0, 262163, 15, 0, 327680, 17, 0, 327699, 15, 0, 393216, 17, 0, 393235, 15, 0, 458752, 17, 0, 458771, 15, 0, 524288, 17, 0, 524307, 15, 0, 589824, 17, 0, 589843, 15, 0, 655361, 13, 0, 655362, 13, 0, 655363, 13, 0, 655364, 13, 0, 655365, 13, 0, 655366, 13, 0, 655367, 13, 0, 655368, 13, 0, 655369, 13, 0, 655370, 13, 0, 655371, 13, 0, 655372, 13, 0, 655373, 13, 0, 655374, 13, 0, 655375, 13, 0, 655376, 13, 0, 655377, 13, 0, 655378, 13, 0 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="CutScene"]
+script = ExtResource( 6 )
+
+[node name="ColorRect" type="ColorRect" parent="CutScene/CanvasLayer"]
+material = ExtResource( 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="1" type="PopupDialog" parent="CutScene/CanvasLayer" groups=[
+"dilog",
+]]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 28.0
+margin_top = -77.0
+margin_right = -31.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="CutScene/CanvasLayer/1"]
+margin_left = 4.0
+margin_top = -0.180176
+margin_right = 72.0
+margin_bottom = 76.8198
+texture = ExtResource( 5 )
+stretch_mode = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CutScene/CanvasLayer/1"]
+margin_left = 72.0
+margin_top = 11.0
+margin_right = 548.0
+margin_bottom = 69.0
+text = "Hello... my sources tell me you're the best hacker out there. I need someone to hack into a top secret government buiding..."
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="2" type="PopupDialog" parent="CutScene/CanvasLayer" groups=[
+"dilog",
+]]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 28.0
+margin_top = -77.0
+margin_right = -31.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="CutScene/CanvasLayer/2"]
+margin_left = 4.0
+margin_top = -0.180176
+margin_right = 72.0
+margin_bottom = 76.8198
+texture = ExtResource( 5 )
+stretch_mode = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CutScene/CanvasLayer/2"]
+margin_left = 72.0
+margin_top = 11.0
+margin_right = 548.0
+margin_bottom = 69.0
+text = "...I'm offering $2 million for all files related to PROJECT - O.D.E.N. The money will be wired to your account as soon as I have the files..."
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="3" type="PopupDialog" parent="CutScene/CanvasLayer" groups=[
+"dilog",
+]]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 28.0
+margin_top = -77.0
+margin_right = -31.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="CutScene/CanvasLayer/3"]
+margin_left = 4.0
+margin_top = -0.180176
+margin_right = 72.0
+margin_bottom = 76.8198
+texture = ExtResource( 5 )
+stretch_mode = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CutScene/CanvasLayer/3"]
+margin_left = 72.0
+margin_top = 11.0
+margin_right = 548.0
+margin_bottom = 69.0
+text = "... I hope everything I've heard about your hacking ability is true. This wont be easy..."
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="CutScene/CanvasLayer"]

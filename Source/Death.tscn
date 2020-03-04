@@ -1,0 +1,72 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Source/Scripts/Death.gd" type="Script" id=1]
+[ext_resource path="res://Source/Textures/Retry0001.png" type="Texture" id=2]
+[ext_resource path="res://Source/Textures/Retry0000.png" type="Texture" id=3]
+
+[node name="Death" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -70.5
+margin_top = -32.0
+margin_right = 70.5
+margin_bottom = 32.0
+text = "YOU DIED"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSplitContainer" type="HSplitContainer" parent="Panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -70.0
+margin_top = 20.0
+margin_right = 70.0
+margin_bottom = 60.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Menu" type="TextureButton" parent="Panel/HSplitContainer"]
+margin_right = 64.0
+margin_bottom = 40.0
+texture_normal = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Retry" type="TextureButton" parent="Panel/HSplitContainer"]
+margin_left = 76.0
+margin_right = 140.0
+margin_bottom = 40.0
+texture_normal = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+current = true
+[connection signal="pressed" from="Panel/HSplitContainer/Menu" to="." method="_on_Menu_pressed"]
+[connection signal="pressed" from="Panel/HSplitContainer/Retry" to="." method="_on_Retry_pressed"]

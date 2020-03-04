@@ -1,0 +1,87 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Source/Scripts/MainMenu.gd" type="Script" id=1]
+[ext_resource path="res://Source/Textures/Menu0000.png" type="Texture" id=2]
+[ext_resource path="res://Source/Textures/Menu0002.png" type="Texture" id=3]
+[ext_resource path="res://Source/Textures/Menu0001.png" type="Texture" id=4]
+[ext_resource path="res://Source/Audio/VGMA Challenge - July 5th.wav" type="AudioStream" id=5]
+[ext_resource path="res://Floor.tres" type="TileSet" id=6]
+
+[node name="MainMenu" type="Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -320.0
+margin_top = -180.0
+margin_right = 320.0
+margin_bottom = 180.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Camera2D" type="Camera2D" parent="CenterContainer"]
+anchor_mode = 0
+current = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = -32.0
+autoplay = true
+
+[node name="VSplitContainer" type="VSplitContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -70.0
+margin_top = -38.0
+margin_right = 70.0
+margin_bottom = 38.0
+split_offset = 1
+dragger_visibility = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSplitContainer" type="HSplitContainer" parent="VSplitContainer"]
+margin_right = 140.0
+margin_bottom = 32.0
+dragger_visibility = 1
+
+[node name="Play" type="TextureButton" parent="VSplitContainer/HSplitContainer"]
+margin_right = 64.0
+margin_bottom = 32.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 2 )
+
+[node name="Options" type="TextureButton" parent="VSplitContainer/HSplitContainer"]
+margin_left = 76.0
+margin_right = 140.0
+margin_bottom = 32.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 4 )
+
+[node name="Credits" type="TextureButton" parent="VSplitContainer"]
+margin_top = 44.0
+margin_right = 140.0
+margin_bottom = 76.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 3 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 6 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 1, 19, 0, 2, 19, 0, 3, 19, 0, 4, 19, 0, 5, 19, 0, 6, 19, 0, 7, 19, 0, 8, 19, 0, 9, 19, 0, 10, 19, 0, 11, 19, 0, 12, 19, 0, 13, 19, 0, 14, 19, 0, 15, 19, 0, 16, 19, 0, 17, 19, 0, 18, 19, 0, 65536, 17, 0, 65555, 15, 0, 131072, 17, 0, 131091, 15, 0, 196608, 17, 0, 196614, 12, 0, 196615, 13, 0, 196616, 13, 0, 196617, 13, 0, 196618, 13, 0, 196619, 13, 0, 196620, 13, 0, 196621, 14, 0, 196627, 15, 0, 262144, 17, 0, 262150, 15, 0, 262157, 17, 0, 262163, 15, 0, 327680, 17, 0, 327686, 15, 0, 327693, 17, 0, 327699, 15, 0, 393216, 17, 0, 393222, 15, 0, 393229, 17, 0, 393235, 15, 0, 458752, 17, 0, 458758, 18, 0, 458759, 19, 0, 458760, 19, 0, 458761, 19, 0, 458762, 19, 0, 458763, 19, 0, 458764, 19, 0, 458765, 20, 0, 458771, 15, 0, 524288, 17, 0, 524307, 15, 0, 589824, 17, 0, 589843, 15, 0, 655361, 13, 0, 655362, 13, 0, 655363, 13, 0, 655364, 13, 0, 655365, 13, 0, 655366, 13, 0, 655367, 13, 0, 655368, 13, 0, 655369, 13, 0, 655370, 13, 0, 655371, 13, 0, 655372, 13, 0, 655373, 13, 0, 655374, 13, 0, 655375, 13, 0, 655376, 13, 0, 655377, 13, 0, 655378, 13, 0 )
+[connection signal="pressed" from="VSplitContainer/HSplitContainer/Play" to="." method="_on_Play_pressed"]
+[connection signal="pressed" from="VSplitContainer/HSplitContainer/Options" to="." method="_on_Options_pressed"]
+[connection signal="pressed" from="VSplitContainer/Credits" to="." method="_on_Credits_pressed"]

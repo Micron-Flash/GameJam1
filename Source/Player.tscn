@@ -182,7 +182,8 @@ graph_offset = Vector2( 28, -64 )
 [sub_resource type="AnimationNodeStateMachinePlayback" id=23]
 
 [sub_resource type="CapsuleShape2D" id=24]
-radius = 24.0
+radius = 10.5586
+height = 12.6278
 
 [node name="Player" type="KinematicBody2D" groups=[
 "Player",
@@ -196,6 +197,7 @@ __meta__ = {
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = ExtResource( 1 )
+animation = "New"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -256,8 +258,9 @@ collision_layer = 8
 collision_mask = 41
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
-visible = false
 shape = SubResource( 24 )
+
+[node name="Timer" type="Timer" parent="."]
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]
 [connection signal="body_entered" from="Area2D2" to="." method="_on_Area2D2_body_entered"]
