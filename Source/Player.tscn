@@ -11,10 +11,6 @@
 radius = 14.3287
 height = 23.906
 
-[sub_resource type="CapsuleShape2D" id=2]
-radius = 16.0
-height = 32.0
-
 [sub_resource type="Animation" id=3]
 resource_name = "Attack"
 length = 0.5
@@ -185,15 +181,16 @@ graph_offset = Vector2( 28, -64 )
 radius = 10.5586
 height = 12.6278
 
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 16.0
+height = 1.33175
+
 [node name="Player" type="KinematicBody2D" groups=[
 "Player",
 ]]
 z_index = 2
 collision_mask = 2
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = ExtResource( 1 )
@@ -210,20 +207,6 @@ current = true
 zoom = Vector2( 2, 2 )
 smoothing_enabled = true
 script = ExtResource( 3 )
-
-[node name="Area2D" type="Area2D" parent="."]
-show_behind_parent = true
-position = Vector2( 0, -8 )
-collision_layer = 16
-collision_mask = 20
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-visible = false
-show_behind_parent = true
-position = Vector2( 0, 16 )
-rotation = 1.5708
-shape = SubResource( 2 )
-one_way_collision_margin = 0.0
 
 [node name="HealthBar" parent="." instance=ExtResource( 4 )]
 margin_left = -16.0
@@ -261,7 +244,20 @@ collision_mask = 41
 shape = SubResource( 24 )
 
 [node name="Timer" type="Timer" parent="."]
-[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
-[connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]
+
+[node name="Area2D" type="Area2D" parent="."]
+show_behind_parent = true
+position = Vector2( 0, -8 )
+collision_layer = 16
+collision_mask = 20
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+show_behind_parent = true
+position = Vector2( 16, 17.5025 )
+rotation = 1.5708
+shape = SubResource( 2 )
+one_way_collision_margin = 0.0
 [connection signal="body_entered" from="Area2D2" to="." method="_on_Area2D2_body_entered"]
 [connection signal="body_exited" from="Area2D2" to="." method="_on_Area2D2_body_exited"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]

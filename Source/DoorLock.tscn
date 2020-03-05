@@ -7,40 +7,40 @@
 [ext_resource path="res://Source/Audio/Unlock.wav" type="AudioStream" id=5]
 [ext_resource path="res://Source/Textures/compuer.png" type="Texture" id=6]
 
-[sub_resource type="AtlasTexture" id=5]
+[sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 6 )
 region = Rect2( 0, 0, 32, 64 )
 
-[sub_resource type="AtlasTexture" id=6]
+[sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 6 )
 region = Rect2( 32, 0, 32, 64 )
 
-[sub_resource type="AtlasTexture" id=7]
+[sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 6 )
 region = Rect2( 0, 64, 32, 64 )
 
-[sub_resource type="AtlasTexture" id=8]
+[sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 6 )
 region = Rect2( 32, 64, 32, 64 )
 
-[sub_resource type="AtlasTexture" id=9]
+[sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 1 )
 region = Rect2( 0, 0, 32, 64 )
 
-[sub_resource type="SpriteFrames" id=3]
+[sub_resource type="SpriteFrames" id=6]
 animations = [ {
-"frames": [ SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
 "loop": true,
 "name": "Lock",
 "speed": 6.0
 }, {
-"frames": [ SubResource( 9 ) ],
+"frames": [ SubResource( 5 ) ],
 "loop": true,
 "name": "Open",
 "speed": 5.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 29.1659, 32 )
 
 [node name="Door Lock" type="StaticBody2D" groups=[
@@ -51,7 +51,7 @@ collision_mask = 16
 script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-frames = SubResource( 3 )
+frames = SubResource( 6 )
 animation = "Open"
 playing = true
 
@@ -141,7 +141,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
-shape = SubResource( 4 )
+shape = SubResource( 7 )
 
 [node name="HealthBar" parent="." instance=ExtResource( 3 )]
 margin_left = -16.0

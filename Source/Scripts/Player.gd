@@ -11,14 +11,19 @@ var byLock = false
 export var dmg = 10
 export var health = 100
 var byLaser = false 
+var byThing = false
 var byServer = false
+export var folderScore = 0
 var byFire = false
 var alive = true
 var onFire = false
+var byFolder = false
+var end = false
 onready var timer = $Timer
 onready var camera = $Camera2D 
 onready var health_Bar = $HealthBar
 onready var animate = $AnimationTree.get("parameters/playback")
+onready var collider = $Area2D
 var bod
 onready var sound = $AudioStreamPlayer2D
 onready var sound2 = $AudioStreamPlayer2D2
@@ -30,17 +35,21 @@ func _ready():
 
 
 func _physics_process(_delta):
+	self.modulate = Color(1,1,1)
 	motion.y += GRAVITY
 	var friction = false
 	if alive:
 		if Input.is_action_pressed("ui_right"):
 			motion.x = min(motion.x + ACCELERATION, MAX_SPEED)
 			animate.travel("Walk")
-			player.flip_h = false
+			player.set_flip_h(false)
+			collider.set_scale(Vector2(1,1))
 		elif Input.is_action_pressed("ui_left"):
 			motion.x = max(motion.x - ACCELERATION, -MAX_SPEED)
 			animate.travel("Walk")
-			player.flip_h = true
+			player.set_flip_h(true)
+			collider.set_scale(Vector2(-1,1))
+			
 		else:
 			animate.travel("Idle")
 			friction = true
@@ -71,6 +80,12 @@ func _physics_process(_delta):
 				if byServer:
 					camera.shake(.2,15,8)
 					bod.get_parent().hit(dmg)
+				if byServer:
+					camera.shake(.2,15,8)
+					bod.get_parent().hit(dmg)
+				if byThing:
+					camera.shake(.2,15,8)
+					bod.get_parent().dead()
 		if onFire:
 			damage(1)
 
@@ -83,6 +98,12 @@ func _on_Area2D_body_entered(body):
 		byLaser = true
 	elif body.is_in_group("Server"):
 		byServer = true
+	elif body.is_in_group("Stuff"):
+		byThing = true
+	if body.is_in_group("Folder"):
+		self.folderScore = body.get_parent().pickup(self.folderScore)
+	if body.is_in_group("cho"):
+		body.get_tree().get_root().get_node("End/CanvasLayer").end()
 
 	
 
@@ -92,9 +113,12 @@ func _on_Area2D_body_exited(body):
 	byLock = false
 	byLaser = false
 	byServer = false
+	byThing = false
+	byFolder = false
 	
 	
 func damage(var hit):
+	self.modulate = Color(1,0,0)
 	health -= hit
 	health_Bar.update_health(health)
 	if health <= 0:

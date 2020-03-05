@@ -1,0 +1,116 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Source/Scripts/Dilog.gd" type="Script" id=1]
+[ext_resource path="res://Floor.tres" type="TileSet" id=2]
+[ext_resource path="res://Source/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Dilog.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Source/Textures/Siloute2.png" type="Texture" id=5]
+[ext_resource path="res://Source/Textures/Choice.png" type="Texture" id=6]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 14.4185, 31.1536 )
+
+[node name="End" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 0, 19, 0, 1, 19, 0, 2, 19, 0, 3, 19, 0, 4, 19, 0, 5, 19, 0, 6, 19, 0, 7, 19, 0, 8, 19, 0, 9, 19, 0, 10, 19, 0, 11, 19, 0, 12, 19, 0, 13, 19, 0, 14, 19, 0, 15, 19, 0, 16, 19, 0, 17, 19, 0, 18, 19, 0, 19, 19, 0, 131071, 17, 0, 65556, 15, 0, 196607, 17, 0, 131092, 15, 0, 262143, 17, 0, 196628, 15, 0, 327679, 17, 0, 262164, 15, 0, 393215, 17, 0, 327700, 15, 0, 458751, 17, 0, 393236, 15, 0, 524287, 17, 0, 458772, 15, 0, 589823, 17, 0, 524308, 15, 0, 655359, 17, 0, 589844, 15, 0, 655360, 13, 0, 655361, 13, 0, 655362, 13, 0, 655363, 13, 0, 655364, 13, 0, 655365, 13, 0, 655366, 13, 0, 655367, 13, 0, 655368, 13, 0, 655369, 13, 0, 655370, 13, 0, 655371, 13, 0, 655372, 13, 0, 655373, 13, 0, 655374, 13, 0, 655375, 13, 0, 655376, 13, 0, 655377, 13, 0, 655378, 13, 0, 655379, 13, 0 )
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+position = Vector2( 86.5947, 288.935 )
+cutscene = true
+
+[node name="CanvasLayer" parent="." instance=ExtResource( 4 )]
+script = ExtResource( 1 )
+
+[node name="RichTextLabel" parent="CanvasLayer/1" index="1"]
+text = "You've done very well. Now hand over the files!"
+
+[node name="TextureRect" parent="CanvasLayer/2" index="0"]
+texture = ExtResource( 5 )
+
+[node name="RichTextLabel" parent="CanvasLayer/2" index="1"]
+text = "You wont want to do that... You have no Idea what he can do with those files. Thousands could die..."
+
+[node name="Sprite" type="Sprite" parent="." groups=[
+"Choice",
+]]
+visible = false
+position = Vector2( 32, 256.935 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 6 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sprite" groups=[
+"cho",
+]]
+collision_layer = 4
+collision_mask = 20
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/StaticBody2D"]
+shape = SubResource( 1 )
+disabled = true
+
+[node name="Panel" type="Panel" parent="Sprite"]
+margin_left = -48.4578
+margin_top = -50.9454
+margin_right = 48.5422
+margin_bottom = -31.9454
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Sprite/Panel"]
+margin_left = 5.7395
+margin_top = 3.68488
+margin_right = 90.7395
+margin_bottom = 17.6849
+text = "Give the files"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite2" type="Sprite" parent="." groups=[
+"Choice",
+]]
+visible = false
+position = Vector2( 609, 256.935 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 6 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sprite2" groups=[
+"cho",
+]]
+collision_layer = 4
+collision_mask = 20
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2/StaticBody2D"]
+shape = SubResource( 1 )
+disabled = true
+
+[node name="Panel" type="Panel" parent="Sprite2"]
+margin_left = -48.4578
+margin_top = -50.9454
+margin_right = 48.5422
+margin_bottom = -31.9454
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Sprite2/Panel"]
+margin_left = 19.3469
+margin_top = 3.68488
+margin_right = 80.3469
+margin_bottom = 17.6849
+text = "Run Away"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[editable path="CanvasLayer"]
